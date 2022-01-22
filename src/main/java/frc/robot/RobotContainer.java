@@ -4,9 +4,13 @@
 
 package frc.robot;
 
+import com.kauailabs.navx.frc.AHRS;
+
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.commands.*;
+import frc.robot.subsystems.*;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -17,9 +21,53 @@ import edu.wpi.first.wpilibj2.command.Command;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
 
+  public static XboxController xbox;
+  public static AHRS gyro;
+
+  private final Swerve driveTrain;
+  private final DriveXbox driveXbox;
+
+  private final Intake intake;
+  private final IntakeXbox intakeXbox;
+
+  private final Indexer indexer;
+  private final IndexXbox indexXbox;
+
+  private final Shooter shooter;
+  private final ShootXbox shootXbox;
+
+  private final Climber climber;
+  private final ClimbXbox climbXbox;
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
+    xbox = new XboxController(Constants.xboxPort);
+    gyro = new AHRS();
+
+    driveTrain = new Swerve(gyro);
+    driveXbox = new DriveXbox(driveTrain);
+    driveXbox.addRequirements(driveTrain);
+    driveTrain.setDefaultCommand(driveXbox);
+
+    intake = new Intake(xbox);
+    intakeXbox = new IntakeXbox(intake);
+    intakeXbox.addRequirements(intake);
+    intake.setDefaultCommand(intakeXbox);
+
+    indexer = new Indexer(xbox);
+    indexXbox = new IndexXbox(indexer);
+    indexXbox.addRequirements(indexer);
+    indexer.setDefaultCommand(indexXbox);
+
+    shooter = new Shooter(xbox);
+    shootXbox = new ShootXbox(shooter);
+    shootXbox.addRequirements(shooter);
+    shooter.setDefaultCommand(shootXbox);
+
+    climber = new Climber(xbox);
+    climbXbox = new ClimbXbox(climber);
+    climbXbox.addRequirements(climber);
+    climber.setDefaultCommand(climbXbox);
     // Configure the button bindings
     configureButtonBindings();
   }

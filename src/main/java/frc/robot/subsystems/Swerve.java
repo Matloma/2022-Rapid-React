@@ -20,14 +20,14 @@ import frc.robot.Constants;
 public class Swerve extends SubsystemBase {
   /** Creates a new Swerve. */
 
-  private WPI_TalonFX FrontLeftDrive;
-  private WPI_TalonFX FrontLeftSteer;
-  private WPI_TalonFX BackLeftDrive;
-  private WPI_TalonFX BackLeftSteer;
-  private WPI_TalonFX FrontRightDrive;
-  private WPI_TalonFX FrontRightSteer;
-  private WPI_TalonFX BackRightDrive;
-  private WPI_TalonFX BackRightSteer;
+  private WPI_TalonFX FrontLeftDriveMotor;
+  private WPI_TalonFX FrontLeftSteerMotor;
+  private WPI_TalonFX BackLeftDriveMotor;
+  private WPI_TalonFX BackLeftSteerMotor;
+  private WPI_TalonFX FrontRightDriveMotor;
+  private WPI_TalonFX FrontRightSteerMotor;
+  private WPI_TalonFX BackRightDriveMotor;
+  private WPI_TalonFX BackRightSteerMotor;
 
   private AHRS gyro;
   
@@ -46,17 +46,17 @@ public class Swerve extends SubsystemBase {
   private SwerveModuleState backLeft;
   private SwerveModuleState backRight;
 
-  public Swerve(XboxController xbox, AHRS gyro) {
-    this.gyro = gyro;
+  public Swerve(AHRS GYRO) {
+    gyro = GYRO;
 
-    FrontLeftDrive = new WPI_TalonFX(Constants.FLDCanPort);
-    FrontLeftSteer = new WPI_TalonFX(Constants.FLSCanPort);
-    BackLeftDrive = new WPI_TalonFX(Constants.BLDCanPort);
-    BackLeftSteer = new WPI_TalonFX(Constants.BLSCanPort);
-    FrontRightDrive = new WPI_TalonFX(Constants.FRDCanPort);
-    FrontRightSteer = new WPI_TalonFX(Constants.FRSCanPort);
-    BackRightDrive = new WPI_TalonFX(Constants.BRDCanPort);
-    BackRightSteer = new WPI_TalonFX(Constants.BRSCanPort);
+    FrontLeftDriveMotor = new WPI_TalonFX(Constants.FLDCanPort);
+    FrontLeftSteerMotor = new WPI_TalonFX(Constants.FLSCanPort);
+    BackLeftDriveMotor = new WPI_TalonFX(Constants.BLDCanPort);
+    BackLeftSteerMotor = new WPI_TalonFX(Constants.BLSCanPort);
+    FrontRightDriveMotor = new WPI_TalonFX(Constants.FRDCanPort);
+    FrontRightSteerMotor = new WPI_TalonFX(Constants.FRSCanPort);
+    BackRightDriveMotor = new WPI_TalonFX(Constants.BRDCanPort);
+    BackRightSteerMotor = new WPI_TalonFX(Constants.BRSCanPort);
 
     frontLeftLocation = new Translation2d(Constants.wheelPositionAbsoluteValue, Constants.wheelPositionAbsoluteValue);
     frontRightLocation = new Translation2d(Constants.wheelPositionAbsoluteValue, -Constants.wheelPositionAbsoluteValue);
@@ -76,14 +76,14 @@ public class Swerve extends SubsystemBase {
     backLeft = moduleStates[2];
     backRight = moduleStates[3];
 
-    FrontLeftDrive.set(TalonFXControlMode.PercentOutput, frontLeft.speedMetersPerSecond*Constants.throttle);  //The maximum speed in MPS from the SwerveDrive class just barely exceeds 1 (1.012 is the highest Ive seen), so using Percent Output is more efficient than Velocity Mode
-    FrontLeftSteer.set(TalonFXControlMode.Position, frontLeft.angle.getDegrees() * -1.0 / 360 * 2048*Constants.angleGearReduction);        //*-1 because gyro goes counterclockwise for positive values, but motor doesnt, /360 to get a ratio, *2048 because falcon500 encoders have 2048 points per rotation.
-    FrontRightDrive.set(TalonFXControlMode.PercentOutput, frontRight.speedMetersPerSecond*Constants.throttle);
-    FrontRightSteer.set(TalonFXControlMode.Position, frontRight.angle.getDegrees() * -1.0 / 360 * 2048*Constants.angleGearReduction);
-    BackLeftDrive.set(TalonFXControlMode.PercentOutput, backLeft.speedMetersPerSecond*Constants.throttle);
-    BackLeftSteer.set(TalonFXControlMode.Position, backLeft.angle.getDegrees() * -1.0 / 360 * 2048*Constants.angleGearReduction);
-    BackRightDrive.set(TalonFXControlMode.PercentOutput, backRight.speedMetersPerSecond*Constants.throttle);
-    BackRightSteer.set(TalonFXControlMode.Position, backRight.angle.getDegrees() * -1.0 / 360 * 2048*Constants.angleGearReduction);
+    FrontLeftDriveMotor.set(TalonFXControlMode.PercentOutput, frontLeft.speedMetersPerSecond*Constants.throttle);  //The maximum speed in MPS from the SwerveDrive class just barely exceeds 1 (1.012 is the highest Ive seen), so using Percent Output is more efficient than Velocity Mode
+    FrontLeftSteerMotor.set(TalonFXControlMode.Position, frontLeft.angle.getDegrees() * -1.0 / 360 * 2048*Constants.angleGearReduction);        //*-1 because gyro goes counterclockwise for positive values, but motor doesnt, /360 to get a ratio, *2048 because falcon500 encoders have 2048 points per rotation.
+    FrontRightDriveMotor.set(TalonFXControlMode.PercentOutput, frontRight.speedMetersPerSecond*Constants.throttle);
+    FrontRightSteerMotor.set(TalonFXControlMode.Position, frontRight.angle.getDegrees() * -1.0 / 360 * 2048*Constants.angleGearReduction);
+    BackLeftDriveMotor.set(TalonFXControlMode.PercentOutput, backLeft.speedMetersPerSecond*Constants.throttle);
+    BackLeftSteerMotor.set(TalonFXControlMode.Position, backLeft.angle.getDegrees() * -1.0 / 360 * 2048*Constants.angleGearReduction);
+    BackRightDriveMotor.set(TalonFXControlMode.PercentOutput, backRight.speedMetersPerSecond*Constants.throttle);
+    BackRightSteerMotor.set(TalonFXControlMode.Position, backRight.angle.getDegrees() * -1.0 / 360 * 2048*Constants.angleGearReduction);
     
   }
 
