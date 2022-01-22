@@ -49,22 +49,22 @@ public class RobotContainer {
     driveXbox.addRequirements(driveTrain);
     driveTrain.setDefaultCommand(driveXbox);
 
-    intake = new Intake(xbox);
+    intake = new Intake();
     intakeXbox = new IntakeXbox(intake);
     intakeXbox.addRequirements(intake);
     intake.setDefaultCommand(intakeXbox);
 
-    indexer = new Indexer(xbox);
+    indexer = new Indexer();
     indexXbox = new IndexXbox(indexer);
     indexXbox.addRequirements(indexer);
     indexer.setDefaultCommand(indexXbox);
 
-    shooter = new Shooter(xbox);
+    shooter = new Shooter();
     shootXbox = new ShootXbox(shooter);
     shootXbox.addRequirements(shooter);
     shooter.setDefaultCommand(shootXbox);
 
-    climber = new Climber(xbox);
+    climber = new Climber();
     climbXbox = new ClimbXbox(climber);
     climbXbox.addRequirements(climber);
     climber.setDefaultCommand(climbXbox);
