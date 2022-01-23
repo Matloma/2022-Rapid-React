@@ -57,8 +57,8 @@ public final class Constants {
         public static final I2C.Port i2cPort = I2C.Port.kOnboard;
 
     //Constants --------------------------------------------------------------------------------
-	    public static final double wheelPositionAbsoluteValue = 0;
-	    public static final int angleGearReduction = 0;
+	    public static final double wheelPositionAbsoluteValue = 15.9099;
+	    public static final double angleGearReduction = 12.8;
 
     //Variables --------------------------------------------------------------------------------
         public static double throttle = 0.5;

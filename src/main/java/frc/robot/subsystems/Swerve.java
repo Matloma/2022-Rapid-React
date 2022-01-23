@@ -77,13 +77,13 @@ public class Swerve extends SubsystemBase {
     backRight = moduleStates[3];
 
     FrontLeftDriveMotor.set(TalonFXControlMode.PercentOutput, frontLeft.speedMetersPerSecond*Constants.throttle);  //The maximum speed in MPS from the SwerveDrive class just barely exceeds 1 (1.012 is the highest Ive seen), so using Percent Output is more efficient than Velocity Mode
-    FrontLeftSteerMotor.set(TalonFXControlMode.Position, frontLeft.angle.getDegrees() * -1.0 / 360 * 2048*Constants.angleGearReduction);        //*-1 because gyro goes counterclockwise for positive values, but motor doesnt, /360 to get a ratio, *2048 because falcon500 encoders have 2048 points per rotation.
+    FrontLeftSteerMotor.set(TalonFXControlMode.Position, frontLeft.angle.getDegrees() * -1.0 / 360 * 2048/Constants.angleGearReduction);        //*-1 because gyro goes counterclockwise for positive values, but motor doesnt, /360 to get a ratio, *2048 because falcon500 encoders have 2048 points per rotation.
     FrontRightDriveMotor.set(TalonFXControlMode.PercentOutput, frontRight.speedMetersPerSecond*Constants.throttle);
-    FrontRightSteerMotor.set(TalonFXControlMode.Position, frontRight.angle.getDegrees() * -1.0 / 360 * 2048*Constants.angleGearReduction);
+    FrontRightSteerMotor.set(TalonFXControlMode.Position, frontRight.angle.getDegrees() * -1.0 / 360 * 2048/Constants.angleGearReduction);
     BackLeftDriveMotor.set(TalonFXControlMode.PercentOutput, backLeft.speedMetersPerSecond*Constants.throttle);
-    BackLeftSteerMotor.set(TalonFXControlMode.Position, backLeft.angle.getDegrees() * -1.0 / 360 * 2048*Constants.angleGearReduction);
+    BackLeftSteerMotor.set(TalonFXControlMode.Position, backLeft.angle.getDegrees() * -1.0 / 360 * 2048/Constants.angleGearReduction);
     BackRightDriveMotor.set(TalonFXControlMode.PercentOutput, backRight.speedMetersPerSecond*Constants.throttle);
-    BackRightSteerMotor.set(TalonFXControlMode.Position, backRight.angle.getDegrees() * -1.0 / 360 * 2048*Constants.angleGearReduction);
+    BackRightSteerMotor.set(TalonFXControlMode.Position, backRight.angle.getDegrees() * -1.0 / 360 * 2048/Constants.angleGearReduction);
     
   }
 
