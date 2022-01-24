@@ -61,7 +61,7 @@ public final class Constants {
 	    public static final double angleGearReduction = 12.8;
 
     //Variables --------------------------------------------------------------------------------
-        public static double throttle = 0.5;
+        public static double throttle = 0.1;
 
     
     
