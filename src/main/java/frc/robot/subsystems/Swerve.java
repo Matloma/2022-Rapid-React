@@ -88,7 +88,7 @@ public class Swerve extends SubsystemBase {
   }
 
   public void driveXbox(XboxController xbox, double speed){
-    drive(xbox.getLeftY()*-1, xbox.getLeftX(), xbox.getRightX());
+    drive(xbox.getLeftY()*-1*speed, xbox.getLeftX()*speed, xbox.getRightX()*speed);
   }
   
 

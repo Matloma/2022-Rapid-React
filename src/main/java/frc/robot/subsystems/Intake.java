@@ -23,8 +23,8 @@ public class Intake extends SubsystemBase {
   }
 
   public void intakeXbox(XboxController xbox, double speed){
-    if(xbox.getLeftBumper()){
-      intakeBall(speed);
+    if(xbox.getLeftTriggerAxis()>=0.1){
+      intakeBall(xbox.getLeftTriggerAxis()*speed);
     } else {
       stop();
     }

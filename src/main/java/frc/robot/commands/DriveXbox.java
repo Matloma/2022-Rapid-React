@@ -18,7 +18,6 @@ public class DriveXbox extends CommandBase {
     // Use addRequirements() here to declare subsystem dependencies.    
     addRequirements(DRIVETRAIN);
     driveTrain=DRIVETRAIN;
-
   }
 
   // Called when the command is initially scheduled.

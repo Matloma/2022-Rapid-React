@@ -59,9 +59,14 @@ public final class Constants {
     //Constants --------------------------------------------------------------------------------
 	    public static final double wheelPositionAbsoluteValue = 15.9099;
 	    public static final double angleGearReduction = 12.8;
+        public static final double TelescopingArmRotationToDistanceInches = 2;
+        public static final double RotatingArmRotationToAngleDegrees = 0.9;
 
     //Variables --------------------------------------------------------------------------------
-        public static double throttle = 0.1;
+        public static final double throttle = 0.1;
+        public static final double intakeMaxSpeed = 0.5;
+        public static final double indexerMaxSpeed = 0.5;
+        public static final double shooterMaxSpeed = 0.5;
 
     
     
